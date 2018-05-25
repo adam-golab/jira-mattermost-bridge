@@ -43,11 +43,13 @@ app.post('/hooks/:hookid', (req, res) => {
   }
 
   const changesHeader = `\n\n| Field | Previous Value | New Value |\n|:-----|:-----|:-----|\n`;
-  const changes = changedItems.map(change => `|${change.field}|${change.fromString}|${change.toString}|`);
+  const changes = changedItems
+    .map(change => `| ${change.field} | ${change.fromString} | ${change.toString} |`)
+    .join('\n');
 
   request
     .post(`${MATTERMOST_URL}/hooks/${hookId}`)
-    .send({ text: `${content} ${changesHeader} ${changes}`, username: 'JIRA' })
+    .send({ text: `${content}${changesHeader}${changes}`, username: 'JIRA' })
     .end(() => res.send('OK'));
 });
 
