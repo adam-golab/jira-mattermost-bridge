@@ -19,7 +19,7 @@ Set the following environment variables to provide the Mattermost and JIRA serve
 ## Docker Version
 Pull the image from Docker Hub and run a container:
 ```sh
-docker run --rm -p 8080:8080 adamgolab/jira-matter-bridge
+docker run --rm -p 8080:8080 adamgolab/jira-mattermost-bridge
 ```
 
 ## TODO
