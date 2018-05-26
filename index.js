@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 8080;
 const JIRA_URL = process.env.JIRA_URL;
 const MATTERMOST_URL = process.env.MATTERMOST_URL;
 
+if (!JIRA_URL || !MATTERMOST_URL) {
+  console.error('Please provide JIRA_URL and MATTERMOST_URL env variables');
+  process.exit(1);
+}
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
